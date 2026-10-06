@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Journey Inside a Computer</title>
+  <meta name="description" content="A scroll-driven 3D flight inside a computer: from the motherboard into the CPU, down to the transistors, into binary itself. Built with A-Frame.">
+  <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-core"></div>
+    <p>booting journey…</p>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="progress"><div id="progress-fill"></div></div>
+    <div id="station-tag"><span id="station-num">01</span><span class="sep">/</span>05</div>
+  </div>
+
+  <!-- Narration cards -->
+  <div id="overlay"></div>
+
+  <div id="scroll-hint">
+    <div class="mouse"><div class="wheel"></div></div>
+    <span>scroll to fly</span>
+  </div>
+
+  <a-scene id="scene" background="color: #04060e" fog="type: exponential; color: #04060e; density: 0.02" loading-screen="enabled: false">
+    <!-- Camera rig: scroll drives z, drag looks around -->
+    <a-entity id="rig" position="0 3.4 12">
+      <a-camera id="cam" look-controls="pointerLockEnabled: false" wasd-controls="enabled: false" fov="68"></a-camera>
+    </a-entity>
+
+    <!-- Lights -->
+    <a-entity light="type: ambient; intensity: 0.55; color: #aabbff"></a-entity>
+    <a-entity light="type: directional; intensity: 0.7; color: #ffffff" position="5 10 8"></a-entity>
+    <a-entity light="type: point; intensity: 60; color: #00e5ff; distance: 40; decay: 2" position="0 4 -34"></a-entity>
+    <a-entity light="type: point; intensity: 60; color: #ff9d00; distance: 40; decay: 2" position="0 4 -68"></a-entity>
+    <a-entity light="type: point; intensity: 80; color: #b366ff; distance: 50; decay: 2" position="0 4 -136"></a-entity>
+
+    <!-- Station anchors, filled procedurally -->
+    <a-entity id="st-mobo" position="0 0 0"></a-entity>
+    <a-entity id="st-cpu" position="0 0 -34"></a-entity>
+    <a-entity id="st-trans" position="0 0 -68"></a-entity>
+    <a-entity id="st-binary" position="0 0 -102"></a-entity>
+    <a-entity id="st-finale" position="0 0 -136"></a-entity>
+
+    <a-entity id="dust"></a-entity>
+    <a-entity id="glows"></a-entity>
+  </a-scene>
+
+  <script src="app.js"></script>
+</body>
+</html>
