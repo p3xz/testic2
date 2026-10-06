@@ -23,6 +23,13 @@ a-scene {
   inset: 0;
   width: 100vw;
   height: 100vh;
+  /* Let vertical touch drags scroll the page (the scroll drives the camera).
+     Mouse-drag look-around still works on desktop. */
+  touch-action: pan-y;
+}
+
+a-scene canvas {
+  touch-action: pan-y;
 }
 
 /* ---------- loader ---------- */
